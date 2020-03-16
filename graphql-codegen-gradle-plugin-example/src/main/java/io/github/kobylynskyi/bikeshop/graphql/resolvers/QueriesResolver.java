@@ -1,6 +1,7 @@
 package io.github.kobylynskyi.bikeshop.graphql.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.schema.DataFetchingEnvironment;
 import io.github.kobylynskyi.bikeshop.graphql.api.Query;
 import io.github.kobylynskyi.bikeshop.graphql.mappers.BikeMapper;
 import io.github.kobylynskyi.bikeshop.graphql.model.BikeTO;
@@ -22,16 +23,17 @@ public class QueriesResolver implements Query, GraphQLQueryResolver {
     @Autowired
     private BikeMapper mapper;
 
+
     @Override
-    public Collection<BikeTO> bikes() {
+    public Collection<BikeTO> bikes(Integer first, Integer offset, DataFetchingEnvironment env) throws Exception {
         return service.findAll().stream()
                 .map(mapper::map)
                 .collect(toList());
     }
 
     @Override
-    public Collection<BikeTO> bikesByType(BikeTypeTO bikeTypeTO) {
-        BikeType bikeType = mapper.mapInputType(bikeTypeTO);
+    public Collection<BikeTO> bikesByType(BikeTypeTO type, DataFetchingEnvironment env) throws Exception {
+        BikeType bikeType = mapper.mapInputType(type);
         return service.findByType(bikeType).stream()
                 .map(mapper::map)
                 .collect(toList());

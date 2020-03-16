@@ -1,6 +1,7 @@
 package io.github.kobylynskyi.bikeshop.graphql.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import graphql.schema.DataFetchingEnvironment;
 import io.github.kobylynskyi.bikeshop.graphql.api.Mutation;
 import io.github.kobylynskyi.bikeshop.graphql.mappers.BikeMapper;
 import io.github.kobylynskyi.bikeshop.graphql.model.BikeInputTO;
@@ -19,8 +20,9 @@ public class MutationsResolver implements Mutation, GraphQLMutationResolver {
     private BikeMapper mapper;
 
     @Override
-    public BikeTO newBike(BikeInputTO bikeInputTO) {
+    public BikeTO newBike(BikeInputTO bikeInputTO, DataFetchingEnvironment env) {
         Bike savedBike = service.create(mapper.mapInput(bikeInputTO));
         return mapper.map(savedBike);
     }
+
 }

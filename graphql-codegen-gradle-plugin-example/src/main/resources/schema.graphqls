@@ -4,7 +4,7 @@ schema {
 }
 
 type Query {
-    bikes: [Bike]
+    bikes(first: Int , offset:Int ): [Bike]
     bikesByType(type: BikeType!): [Bike]
 }
 
@@ -20,6 +20,9 @@ type Bike {
     year: Int
     price: BigDecimal
     addedDateTime: DateTime
+
+    newBike(first: Int , offset:Int ): Bike
+
 }
 
 input BikeInput {

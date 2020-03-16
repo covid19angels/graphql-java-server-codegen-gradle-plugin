@@ -28,7 +28,10 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
     private Map<String, String> customAnnotationsMapping = new HashMap<>();
     private String packageName;
     private String apiPackageName;
+    private List<String> apiPackageImports;
     private String modelPackageName;
+    private String resolverPackageName;
+    private List<String> modelPackageImports;
     private String modelNamePrefix;
     private String modelNameSuffix;
     private String subscriptionReturnType;
@@ -47,12 +50,15 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
         mappingConfig.setModelNameSuffix(modelNameSuffix);
         mappingConfig.setApiPackageName(apiPackageName);
         mappingConfig.setModelPackageName(modelPackageName);
+        mappingConfig.setResolverPackageName(resolverPackageName);
         mappingConfig.setGenerateApis(generateApis);
         mappingConfig.setModelValidationAnnotation(modelValidationAnnotation);
         mappingConfig.setSubscriptionReturnType(subscriptionReturnType);
         mappingConfig.setCustomAnnotationsMapping(customAnnotationsMapping);
         mappingConfig.setGenerateEqualsAndHashCode(generateEqualsAndHashCode);
         mappingConfig.setGenerateToString(generateToString);
+        mappingConfig.setApiPackageImports(apiPackageImports);
+        mappingConfig.setModelPackageImports(modelPackageImports);
 
         new GraphqlCodegen(graphqlSchemaPaths, outputDir, mappingConfig, buildJsonSupplier()).generate();
     }
@@ -144,6 +150,16 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
 
     @Input
     @Optional
+    public String getResolverPackageName() {
+        return resolverPackageName;
+    }
+
+    public void setResolverPackageName(String resolverPackageName) {
+        this.resolverPackageName = resolverPackageName;
+    }
+
+    @Input
+    @Optional
     public Boolean getGenerateApis() {
         return generateApis;
     }
@@ -173,7 +189,6 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
     }
 
     @Input
-    @Optional
     public boolean getGenerateEqualsAndHashCode() {
         return generateEqualsAndHashCode;
     }
@@ -212,4 +227,23 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
         this.jsonConfigurationFile = jsonConfigurationFile;
     }
 
+    @Input
+    @Optional
+    public List<String> getApiPackageImports() {
+        return apiPackageImports;
+    }
+
+    public void setApiPackageImports(List<String> apiPackageImports) {
+        this.apiPackageImports = apiPackageImports;
+    }
+
+    @Input
+    @Optional
+    public List<String> getModelPackageImports() {
+        return modelPackageImports;
+    }
+
+    public void setModelPackageImports(List<String> modelPackageImports) {
+        this.modelPackageImports = modelPackageImports;
+    }
 }
