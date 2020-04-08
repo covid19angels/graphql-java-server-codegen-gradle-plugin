@@ -5,5 +5,5 @@ pluginManagement {
     }
 }
 
-include  'graphql-codegen-gradle-plugin'
-include  'graphql-codegen-gradle-plugin-example'
+include  'graphql-java-server-codegen-gradle-plugin'
+include  'example'
