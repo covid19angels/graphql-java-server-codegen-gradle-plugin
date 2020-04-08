@@ -1,4 +1,4 @@
-# GraphQL Codegen Gradle plugin #
+# GraphQL Server Codegen Gradle plugin #
 
 [![CircleCI](https://img.shields.io/circleci/build/github/kobylynskyi/graphql-java-codegen-gradle-plugin)](https://circleci.com/gh/kobylynskyi/graphql-java-codegen-gradle-plugin/tree/master)
 [![Gradle Plugins](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/io/github/kobylynskyi/graphql/codegen/graphql-codegen-gradle-plugin/maven-metadata.xml.svg?label=gradle)](https://plugins.gradle.org/plugin/io.github.kobylynskyi.graphql.codegen)
