@@ -1,4 +1,4 @@
-package io.github.kobylynskyi.graphql.codegen.gradle;
+package com.contentbig.graphql.server.codegen.gradle;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;

@@ -35,7 +35,7 @@ gradlePlugin {
             id = 'com.contentbig.graphql.server.codegen'
             displayName = 'GraphQL Java Server Codegen'
             description = project.description
-            implementationClass = 'io.github.kobylynskyi.graphql.codegen.gradle.GraphqlCodegenGradlePlugin'
+            implementationClass = 'com.contentbig.graphql.server.codegen.gradle.GraphqlCodegenGradlePlugin'
         }
     }
 }

@@ -1,9 +1,9 @@
-package io.github.kobylynskyi.graphql.codegen.gradle;
+package com.contentbig.graphql.server.codegen.gradle;
 
-import com.kobylynskyi.graphql.codegen.GraphqlCodegen;
-import com.kobylynskyi.graphql.codegen.model.MappingConfig;
-import com.kobylynskyi.graphql.codegen.supplier.JsonMappingConfigSupplier;
-import com.kobylynskyi.graphql.codegen.supplier.MappingConfigSupplier;
+import com.contentbig.graphql.server.codegen.GraphqlCodegen;
+import com.contentbig.graphql.server.codegen.model.MappingConfig;
+import com.contentbig.graphql.server.codegen.supplier.JsonMappingConfigSupplier;
+import com.contentbig.graphql.server.codegen.supplier.MappingConfigSupplier;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.Optional;
