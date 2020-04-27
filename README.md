@@ -162,3 +162,20 @@ Access to classes from your code as normal Kotlin classes.
 
 [swagger-codegen](https://github.com/swagger-api/swagger-codegen)
 
+## [Mermaid Sample ](https://medium.com/better-programming/mermaid-create-charts-and-diagrams-with-markdown-88a9e639ab14)
+<div class="mermaid">
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+</div>
+
+<script  src=”https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
