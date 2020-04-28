@@ -6,7 +6,7 @@ plugins {
     id "com.contentbig.graphql.server.codegen" version "1.3.0"
 }
 
-import io.github.kobylynskyi.graphql.codegen.gradle.GraphqlCodegenGradleTask
+import com.contentbig.graphql.server.codegen.gradle.GraphqlCodegenGradleTask
 
 mainClassName = "io.github.kobylynskyi.bikeshop.Application"
 
@@ -34,13 +34,11 @@ task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
     graphqlSchemaPaths = ["$projectDir/src/main/resources/schema.graphqls".toString()]
     outputDir = new File("$buildDir/generated")
     apiPackageName = "io.github.kobylynskyi.bikeshop.graphql.api"
-    apiPackageImports = ["java.util","java.util"]
     modelPackageName = "io.github.kobylynskyi.bikeshop.graphql.model"
     resolverPackageName = "io.github.kobylynskyi.bikeshop.graphql.resolver"
+    apiPackageImports = ["java.util","java.util"]
     modelPackageImports = ["java.util","java.util"]
-    customTypesMapping = [
-            DateTime: "java.util.Date"
-    ]
+    customTypesMapping = [DateTime: "java.util.Date"]
     modelNameSuffix = "TO"
     generateApis = true
 }
