@@ -26,11 +26,11 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.8"
 }
 
-compileJava.dependsOn "graphqlCodegen1"
+compileJava.dependsOn "graphqlCodegen1","graphqlCodegen"
 
 sourceSets.main.java.srcDir "$buildDir/generated"
 
-task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
+graphqlCodegen {
     graphqlSchemaPaths = ["$projectDir/src/main/resources/schema.graphqls".toString()]
     outputDir = new File("$buildDir/generated")
     apiPackageName = "io.github.kobylynskyi.bikeshop.graphql.api"
@@ -40,6 +40,19 @@ task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
     modelPackageImports = ["java.util","java.util"]
     customTypesMapping = [DateTime: "java.util.Date"]
     modelNameSuffix = "TO"
+    generateApis = true
+}
+
+task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
+    graphqlSchemaPaths = ["$projectDir/src/main/resources/hello-schema.graphqls".toString()]
+    outputDir = new File("$buildDir/generated")
+    apiPackageName = "com.contentbig.hello.graphql.api"
+    modelPackageName = "com.contentbig.hello.graphql.model"
+    resolverPackageName = "com.contentbig.hello.graphql.resolver"
+    apiPackageImports = ["java.util","java.util"]
+    modelPackageImports = ["java.util","java.util"]
+    customTypesMapping = [DateTime: "java.util.Date"]
+    modelNameSuffix = "GQO"
     generateApis = true
 }
 
