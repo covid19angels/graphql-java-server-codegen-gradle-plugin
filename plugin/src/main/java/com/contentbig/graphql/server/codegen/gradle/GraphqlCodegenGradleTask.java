@@ -30,12 +30,10 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
     private String apiPackageName;
     private List<String> apiPackageImports;
     private String modelPackageName;
-    private String resolverPackageName;
     private List<String> modelPackageImports;
     private String modelNamePrefix;
     private String modelNameSuffix;
     private String subscriptionReturnType;
-    private Boolean generateApis = true;
     private String modelValidationAnnotation;
     private Boolean generateEqualsAndHashCode = false;
     private Boolean generateToString = false;
@@ -50,8 +48,6 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
         mappingConfig.setModelNameSuffix(modelNameSuffix);
         mappingConfig.setApiPackageName(apiPackageName);
         mappingConfig.setModelPackageName(modelPackageName);
-        mappingConfig.setResolverPackageName(resolverPackageName);
-        mappingConfig.setGenerateApis(generateApis);
         mappingConfig.setModelValidationAnnotation(modelValidationAnnotation);
         mappingConfig.setSubscriptionReturnType(subscriptionReturnType);
         mappingConfig.setCustomAnnotationsMapping(customAnnotationsMapping);
@@ -146,26 +142,6 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
 
     public void setModelPackageName(String modelPackageName) {
         this.modelPackageName = modelPackageName;
-    }
-
-    @Input
-    @Optional
-    public String getResolverPackageName() {
-        return resolverPackageName;
-    }
-
-    public void setResolverPackageName(String resolverPackageName) {
-        this.resolverPackageName = resolverPackageName;
-    }
-
-    @Input
-    @Optional
-    public Boolean getGenerateApis() {
-        return generateApis;
-    }
-
-    public void setGenerateApis(Boolean generateApis) {
-        this.generateApis = generateApis;
     }
 
     @Input

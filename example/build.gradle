@@ -35,12 +35,10 @@ graphqlCodegen {
     outputDir = new File("$buildDir/generated")
     apiPackageName = "io.github.kobylynskyi.bikeshop.graphql.api"
     modelPackageName = "io.github.kobylynskyi.bikeshop.graphql.model"
-    resolverPackageName = "io.github.kobylynskyi.bikeshop.graphql.resolver"
     apiPackageImports = ["java.util","java.util"]
     modelPackageImports = ["java.util","java.util"]
     customTypesMapping = [DateTime: "java.util.Date"]
     modelNameSuffix = "TO"
-    generateApis = true
 }
 
 task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
@@ -48,12 +46,10 @@ task graphqlCodegen1(type: GraphqlCodegenGradleTask) {
     outputDir = new File("$buildDir/generated")
     apiPackageName = "com.contentbig.hello.graphql.api"
     modelPackageName = "com.contentbig.hello.graphql.model"
-    resolverPackageName = "com.contentbig.hello.graphql.resolver"
     apiPackageImports = ["java.util","java.util"]
     modelPackageImports = ["java.util","java.util"]
     customTypesMapping = [DateTime: "java.util.Date"]
     modelNameSuffix = "GQO"
-    generateApis = true
 }
 
 repositories {
