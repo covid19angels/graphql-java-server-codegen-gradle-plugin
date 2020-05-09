@@ -11,9 +11,11 @@ import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.TaskAction;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Gradle task for GraphQL code generation
@@ -72,7 +74,25 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
     }
 
     public void setGraphqlSchemaPaths(List<String> graphqlSchemaPaths) {
-        this.graphqlSchemaPaths = graphqlSchemaPaths;
+        List<String> dirFilePaths = graphqlSchemaPaths.stream()
+                .map(File::new)
+                .filter(File::isDirectory)
+                .map(File::listFiles)
+                .flatMap(fs-> Arrays.stream(fs))
+                .filter(File::isFile)
+                .map(f->f.getPath())
+                .collect(Collectors.toList());
+
+        List<String> filePaths = graphqlSchemaPaths.stream()
+                .map(File::new)
+                .filter(File::isFile)
+                .map(f->f.getPath())
+                .collect(Collectors.toList());
+
+        System.out.println("====dirFilePaths=\n"+dirFilePaths.toString());
+        System.out.println("====filePaths=\n"+filePaths.toString());
+        filePaths.addAll(dirFilePaths);
+        this.graphqlSchemaPaths = filePaths;
     }
 
     @OutputDirectory
