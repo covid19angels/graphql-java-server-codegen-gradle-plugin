@@ -9,6 +9,8 @@ import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.Optional;
 import org.gradle.api.tasks.OutputDirectory;
 import org.gradle.api.tasks.TaskAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Arrays;
@@ -23,6 +25,7 @@ import java.util.stream.Collectors;
  * @author kobylynskyi
  */
 public class GraphqlCodegenGradleTask extends DefaultTask {
+    private static final Logger LOG = LoggerFactory.getLogger(GraphqlCodegenGradleTask.class);
 
     private List<String> graphqlSchemaPaths;
     private File outputDir;
@@ -89,8 +92,8 @@ public class GraphqlCodegenGradleTask extends DefaultTask {
                 .map(f->f.getPath())
                 .collect(Collectors.toList());
 
-        System.out.println("====dirFilePaths=\n"+dirFilePaths.toString());
-        System.out.println("====filePaths=\n"+filePaths.toString());
+        LOG.debug("=dirFilePaths={}",dirFilePaths.toString());
+        LOG.debug("=filePaths={}",filePaths.toString());
         filePaths.addAll(dirFilePaths);
         this.graphqlSchemaPaths = filePaths;
     }
